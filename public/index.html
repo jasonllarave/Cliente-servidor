@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat en tiempo real</title>
+    <style>
+        /* Estilos básicos */
+        body { font-family: Arial, sans-serif; }
+        ul { list-style-type: none; margin: 0; padding: 0; }
+        li { padding: 8px; margin-bottom: 10px; background-color: #f3f3f3; }
+        input { padding: 10px; width: 80%; }
+        button { padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Chat en tiempo real</h1>
+    
+    <ul id="messages"></ul>
+
+    <form id="form">
+        <input id="input" autocomplete="off" placeholder="Escribe un mensaje..."/><button>Enviar</button>
+    </form>
+
+    <!-- Incluir Socket.IO -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        // Inicializar conexión con Socket.IO
+        const socket = io();
+
+        // Seleccionar elementos del DOM
+        const form = document.getElementById('form');
+        const input = document.getElementById('input');
+        const messages = document.getElementById('messages');
+
+        // Enviar mensaje al servidor cuando se envía el formulario
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Evitar que la página se recargue
+            if (input.value) {
+                socket.emit('chat message', input.value); // Emitir evento 'chat message' al servidor
+                input.value = ''; // Limpiar el input
+            }
+        });
+
+        // Escuchar nuevos mensajes desde el servidor
+        socket.on('chat message', function(msg) {
+            const item = document.createElement('li');
+            item.textContent = msg;
+            messages.appendChild(item); // Añadir el mensaje al DOM
+            window.scrollTo(0, document.body.scrollHeight); // Desplazar hacia el final
+        });
+    </script>
+</body>
+</html>
