@@ -1,4 +1,5 @@
-# Cliente servidor
+
+# Cliente/servidor
 # Chat en Tiempo Real con Node.js y Socket.IO
 
 Este proyecto es una aplicación de chat en tiempo real desarrollada con **Node.js**, **Express** y **Socket.IO**. Permite la comunicación instantánea entre múltiples usuarios conectados, además de respuestas automáticas generadas por un bot simple.
