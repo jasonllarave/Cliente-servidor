@@ -10,16 +10,12 @@ Este proyecto es una aplicación de chat en tiempo real desarrollada con **Node.
 2. [Instalación](#instalación)
 3. [Uso](#uso)
 4. [Arquitectura](#arquitectura)
-5. [Tecnologías Usadas](#tecnologías-usadas)
-6. [Características](#características)
-7. [Contribuir](#contribuir)
-8. [Licencia](#licencia)
+
 
 ## Descripción
 
 Este proyecto implementa un sistema de chat en tiempo real usando **WebSockets** para la comunicación bidireccional entre el cliente y el servidor. Los usuarios pueden enviar y recibir mensajes al instante. También cuenta con un **bot de respuestas automáticas**, que responde a ciertas palabras clave como "hola", "adios", y "ayuda".
 
-## Instalación
 
 ### Prerrequisitos
 
